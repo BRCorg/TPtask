@@ -37,20 +37,18 @@ if (!empty($_POST)) {
     if (isset($_POST['password'])) {
         $password = $_POST['password'];
         
-        // Vérifier la force du mot de passe (doit contenir une majuscule, une minuscule, un chiffre, un caractère spécial et faire au moins 12 caractères)
         $regex = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W).{12,}$/';
         
         if (preg_match($regex, $password)) {
             
-            // Hasher le mot de passe
+        
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
             
-            // Vérifier l'email et le pseudo (vous pouvez ajouter vos propres vérifications ici)
             $email = isset($_POST["email"]) ? $_POST["email"] : null;
             $nickname = isset($_POST["nickname"]) ? $_POST["nickname"] : null;
             
             if ($email && $nickname) {
-                // Appeler la fonction qui va insérer l'utilisateur
+
                 createUser($email, $nickname, $passwordHash);
                 
                 echo "Compte créé avec succès !";

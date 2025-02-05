@@ -1,0 +1,23 @@
+<a href="signup.php">S'inscrire</a>
+
+    <h1>Connexion</h1>
+    <div class="container">
+        <form method="post" action="connexion.php">
+            <label for="email">Email :</label>
+            <input type="text" id="email" name="email" value="<?= isset($_POST["email"]) ? $_POST["email"]: "" ?>" required>
+
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required>
+            
+            <input type="hidden" name="ville" />
+
+            <button>Se connecter</button>
+        </form>
+        
+        <?php if(isset($error)): ?>
+        
+        <p><?= $error ?></p>
+        
+        <?php endif; ?>
+    </div>
+

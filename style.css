@@ -4,6 +4,8 @@ body {
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
+  /*min-height: 100vh;*/
+  /*min-width: 100vh;*/
 }
 
 .container {
@@ -47,7 +49,7 @@ input[type=password] {
 }
 
 button{
-  background-color: #22bf5c;
+  background-color: #5f6df4;
   color: #ffffff;
   padding: 10px 20px;
   border: none;
@@ -56,9 +58,7 @@ button{
   transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #2b8232;
-}
+
 
 .secret-container {
   display: flex;
@@ -123,3 +123,57 @@ button:hover {
 
 
 /*# sourceMappingURL=style.css.map */
+
+.header {
+    margin: 1em;
+    background-color: white;
+    border-radius: 0.6em;
+    padding: 0.6em;
+}
+
+.img {
+    width: 100%;
+    max-height: 450px;
+}
+
+footer {
+    background-color: black;
+    padding: 1em;
+    margin: 1em;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+}
+
+.jsp {
+    display: flex;
+    align-items: center;
+    /* text-align: center; */
+    flex-direction: column;
+    justify-content: center;
+}
+
+.jsp2 {
+    display: flex;
+    flex-direction: row;
+
+}
+
+main {
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 75vh;
+
+}
+
+.footer {
+  color: white;
+  text-align: center;
+}
+
+.lienButton {
+  color:white;
+  text-decoration: none;
+}

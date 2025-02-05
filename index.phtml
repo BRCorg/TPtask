@@ -1,23 +1,22 @@
-
-
-    <h1>Connexion</h1>
-    <div class="container">
-        <form method="post" action="index.php">
-            <label for="email">Email :</label>
-            <input type="text" id="email" name="email" value="<?= isset($_POST["email"]) ? $_POST["email"]: "" ?>" required>
-
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="password" required>
+ 
+ <div>
+ 
+ <div class="jsp2">
+         <div class="jsp">
+            <h1>3WA Tasks</h1>
             
-            <input type="hidden" name="ville" />
+            <h2>The best way to optimize your time</h2>
+            
+            <p>Based on the Eisenhower method, our application give you the best order to do what you have to do.</p>
+            
+            <div>
+                <button><a class="lienButton" href="connexion.php">Se connecter</a></button>
+                   <button><a class="lienButton" href="signup.php">S'inscrire</a></button>
+            </div>
+</div>
+        
+        <div>
+            <img class="img" src="img/tache.jpg" alt="gestionnaire de tache photo"></img>
+        </div>
 
-            <button>Se connecter</button>
-        </form>
-        
-        <?php if(isset($error)): ?>
-        
-        <p><?= $error ?></p>
-        
-        <?php endif; ?>
-    </div>
-
+</div>
