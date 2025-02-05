@@ -1,48 +1,50 @@
-<?php 
+<?php
 
-require_once "config/database.php";
-require_once "repository/usersRepository.php";
 
+include "config/database.php";
+include "repository/usersRepository.php";
+
+
+//démarrage du système de session
 session_start();
 
-
-
-if(!empty($_POST)) {
+//si le form a été soumis ($_POST n'est pas vide)
+if(!empty($_POST)){
     
-    $user = getUserByEmail($_POST['email']);
+    //appel à la bdd
+    //1 créer une fonction qui permet d'aller cherche le mdp haché d'un user par son email
+    $user = getUserByEmail($_POST["email"]);
     
-    
-    if($user) {
-        if(!password_verify($_POST['password'], $user['password'])) {
+    if($user){
+         //si l'utilisateur a saisi les bons identifiants et mots de passe
+        if(password_verify($_POST['password'], $user["password"])){
             
-           $_SESSION["user"] = $user["username"];
-           
-            echo "Votre utilisateur ou Mot de passe est erroné";
+            //création d'une session
+            $_SESSION["user"] = $user["pseudo"];
             
-            // echo $error
-        }else {
-            
-            $_SESSION["email"] = trim($_POST["email"]);
-            
-            header("location:secret.php");
+            //redirection vers la page top secrète
+            header("Location:secret.php");
             exit;
-            
         }
+        else{
+            $error = "Identifiant ou mot de passe incorrect";
+        }
+    }
+    else{
+         $error = "Identifiant ou mot de passe incorrect";
+    }
     
-}else {
-    $error =  "Votre Email ou Mot de passe est incorrect";
-}
-}else {
-    $error = "Veuillez crée un compte";
-}
-
+    //2 comparer le hash avec le mdp saisi dans le form 
+        //si c'est ok, on créer la session
+        //si pas ok, on affiche une erreur 
     
+   
+}
 
-// if(isset($_SESSION["user"]) && $_SESSION["user"] === "admin"){
-//       header("Location:secret.php");
-//         exit;
-// }
-
+if(isset($_SESSION["user"]) && $_SESSION["user"] === "admin"){
+      header("Location:secret.php");
+        exit;
+}
 
 
 $template = "index";

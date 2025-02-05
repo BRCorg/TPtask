@@ -1,11 +1,9 @@
+<div class="secret-container">
+        
+        <h2>Bonjour <?= htmlspecialchars($_SESSION["user"]) ?></h2>
 
-    <header>
-        <nav>
-        <span>3WA Tasks</span>
-        <ul>
-            <li><a href="index.php">Connexion</a></li>
-            <li><a href="logout.php">Se déconnecter</a></li>
-        </ul>
-        </nav>
-    </header>
-    
+        <h1>Code secret : <a class="highlight" href="#"><span>PHP ROCKS !</span></a></h1>
+
+        <a href="logout.php">Se déconnecter</a>
+
+</div>
