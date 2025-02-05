@@ -20,10 +20,10 @@ if(!empty($_POST)){
         if(password_verify($_POST['password'], $user["password"])){
             
             //création d'une session
-            $_SESSION["user"] = $user["pseudo"];
+            $_SESSION["user"] = $user["nickname"];
             
             //redirection vers la page top secrète
-            header("Location:secret.php");
+            header("Location:account.php");
             exit;
         }
         else{
@@ -41,10 +41,10 @@ if(!empty($_POST)){
    
 }
 
-if(isset($_SESSION["user"]) && $_SESSION["user"] === "admin"){
-      header("Location:secret.php");
-        exit;
-}
+// if(isset($_SESSION["user"]) && $_SESSION["user"] === "admin"){
+//       header("Location:secret.php");
+//         exit;
+// }
 
 
 $template = "index";

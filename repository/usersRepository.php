@@ -1,12 +1,12 @@
 <?php
 
-function createUser(string $email, string $pseudo, string $password){
+function createUser(string $email, string $nickname, string $password){
     
     $pdo = getConnexion();
     
-    $query = $pdo -> prepare("INSERT INTO user (email, pseudo, password) VALUES (?,?,?)");
+    $query = $pdo -> prepare("INSERT INTO user (email, nickname, password) VALUES (?,?,?)");
     
-    $query->execute([$email, $pseudo, $password]);
+    $query->execute([$email, $nickname, $password]);
 }
 
 function getUserByEmail(string $email){
