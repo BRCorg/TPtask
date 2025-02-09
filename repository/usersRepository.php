@@ -19,3 +19,12 @@ function getUserByEmail(string $email){
     
     return $query->fetch();
 }
+
+function deleteUser(int $userId) {
+    
+    $pdo = getConnexion();
+    
+    $query = $pdo->prepare("DELETE FROM user WHERE id = ?");
+    
+    $query->execute([$userId]);
+}

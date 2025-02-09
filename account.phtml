@@ -1,9 +1,88 @@
-<div class="secret-container">
+<div class="container1">
+    
+        <div>
         
         <h2>Bonjour <?= htmlspecialchars($_SESSION["user"]) ?></h2>
 
-        <h1>Code secret : <a class="highlight" href="#"><span>PHP ROCKS !</span></a></h1>
+        <!-- Stats de l'utilisateur -->
+        <?php $stats = getUserStats($_SESSION['user_id']); ?>
+        <div class="user-stats">
+            <h3>Vos statistiques</h3>
+            <p>Badge : <span class="badge <?= strtolower($stats['badge']) ?>"><?= $stats['badge'] ?></span></p>
+            <p>Tâches accomplies : <?= $stats['task_count'] ?></p>
+            <p>Points totaux : <?= $stats['total_points'] ?></p>
+        </div>
+        
 
-        <a href="logout.php">Se déconnecter</a>
+        <div class="actions">
+            <a href="leaderboard.php">Voir le classement</a>
+            <a href="logout.php">Se déconnecter</a>
+            <div class="delete-account">
+                <a href="deleteAccount.php">Supprimer mon compte</a>
+            </div>
+        </div>
+        
+        </div>
 
-</div>
+        <div class="tasks-container">
+            <h3>Mes tâches</h3>
+            
+            <!-- Formulaire d'ajout de tâche -->
+            <form method="post" class="task-form">
+                <input type="text" name="title" placeholder="Titre de la tâche" required>
+                <textarea name="description" placeholder="Description"></textarea>
+                <div class="priority-checkboxes">
+                    <label>
+                        <input type="checkbox" name="urgent" value="1"> Urgent
+                    </label>
+                    <label>
+                        <input type="checkbox" name="important" value="1"> Important
+                    </label>
+                </div>
+                <button type="submit">Ajouter</button>
+            </form>
+            
+            </div>
+            </div>
+            <!-- Liste des tâches -->
+            <div class="tasks-list">
+                <?php if(empty($tasks)): ?>
+                    <p>Vous n'avez pas encore de tâches.</p>
+                <?php else: ?>
+                    <?php foreach($tasks as $task): ?>
+                        <div class="task <?= $task['urgent'] ? 'urgent' : '' ?> <?= $task['important'] ? 'important' : '' ?> <?= $task['statut'] ? 'completed' : '' ?>">
+                            <div class="task-actions">
+                                <form method="post" style="display: inline;">
+                                    <input type="hidden" name="action" value="toggle_status">
+                                    <input type="hidden" name="task_id" value="<?= $task['id'] ?>">
+                                    <button type="submit" class="status-btn <?= $task['statut'] ? 'completed' : '' ?>">
+                                        <?= $task['statut'] ? '✓' : '○' ?>
+                                    </button>
+                                </form>
+                                <a href="editTask.php?id=<?= $task['id'] ?>" class="edit-btn">Modifier</a>
+                                <form method="post" style="display: inline;">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="task_id" value="<?= $task['id'] ?>">
+                                    <button type="submit" class="delete-btn">Supprimer</button>
+                                </form>
+                            </div>
+                            <h4><?= htmlspecialchars($task['title']) ?></h4>
+                            <p><?= htmlspecialchars($task['description']) ?></p>
+                            <div class="task-priority">
+                                <?php if($task['urgent'] && $task['important']): ?>
+                                    <span class="priority-tag">Urgent & Important</span>
+                                <?php elseif($task['urgent']): ?>
+                                    <span class="priority-tag">Urgent</span>
+                                <?php elseif($task['important']): ?>
+                                    <span class="priority-tag">Important</span>
+                                <?php else: ?>
+                                    <span class="priority-tag">Normal</span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+
+

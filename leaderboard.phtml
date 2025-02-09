@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Classement des utilisateurs</h1>
+    
+    <!-- Stats de l'utilisateur connecté -->
+    <div class="user-stats">
+        <h3>Vos statistiques</h3>
+        <p>Badge : <span class="badge <?= strtolower($userStats['badge']) ?>"><?= $userStats['badge'] ?></span></p>
+        <p>Tâches accomplies : <?= $userStats['task_count'] ?></p>
+        <p>Points totaux : <?= $userStats['total_points'] ?></p>
+    </div>
+    
+    <!-- Tableau de classement -->
+    <div class="leaderboard">
+        <table>
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Utilisateur</th>
+                    <th>Badge</th>
+                    <th>Tâches accomplies</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($leaderboard as $index => $user): ?>
+                    <tr <?= $user['nickname'] === $_SESSION['user'] ? 'class="current-user"' : '' ?>>
+                        <td><?= $index + 1 ?></td>
+                        <td><?= htmlspecialchars($user['nickname']) ?></td>
+                        <td>
+                            <?php
+                            $badge = 'Débutant';
+                            if ($user['task_count'] >= 20) $badge = 'Expert';
+                            elseif ($user['task_count'] >= 10) $badge = 'Intermédiaire';
+                            ?>
+                            <span class="badge <?= strtolower($badge) ?>"><?= $badge ?></span>
+                        </td>
+                        <td><?= $user['task_count'] ?></td>
+                        <td><?= $user['total_points'] ?? 0 ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="actions">
+        <a href="account.php" class="btn">Retour à mes tâches</a>
+    </div>
+</div> 

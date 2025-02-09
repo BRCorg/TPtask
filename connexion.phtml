@@ -1,23 +1,24 @@
-<a href="signup.php">S'inscrire</a>
-
+<div class="container">
     <h1>Connexion</h1>
-    <div class="container">
-        <form method="post" action="connexion.php">
-            <label for="email">Email :</label>
-            <input type="text" id="email" name="email" value="<?= isset($_POST["email"]) ? $_POST["email"]: "" ?>" required>
+    
+    <?php if(isset($error)): ?>
+        <div class="error"><?= $error ?></div>
+    <?php endif; ?>
 
-            <label for="password">Mot de passe :</label>
+    <form method="post" action="connexion.php">
+        <div>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" required>
+        </div>
+        
+        <div>
+            <label for="password">Mot de passe</label>
             <input type="password" id="password" name="password" required>
-            
-            <input type="hidden" name="ville" />
-
-            <button>Se connecter</button>
-        </form>
+        </div>
         
-        <?php if(isset($error)): ?>
-        
-        <p><?= $error ?></p>
-        
-        <?php endif; ?>
-    </div>
+        <button type="submit">Se connecter</button>
+    </form>
+    
+    <p>Pas encore de compte ? <a href="signup.php">S'inscrire</a></p>
+</div>
 

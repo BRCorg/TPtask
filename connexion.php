@@ -9,36 +9,33 @@ include "repository/usersRepository.php";
 session_start();
 
 //si le form a été soumis ($_POST n'est pas vide)
-if(!empty($_POST)){
-    
-    //appel à la bdd
-    //1 créer une fonction qui permet d'aller cherche le mdp haché d'un user par son email
-    $user = getUserByEmail($_POST["email"]);
-    
-    if($user){
-         //si l'utilisateur a saisi les bons identifiants et mots de passe
-        if(password_verify($_POST['password'], $user["password"])){
+if (!empty($_POST)) {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    if ($email && $password) {
+        $user = getUserByEmail($email);
+        
+        if ($user && password_verify($password, $user['password'])) {
+            // Stockage des informations utilisateur dans la session
+            $_SESSION['user'] = $user['nickname'];
+            $_SESSION['user_id'] = (int)$user['id'];  // Conversion explicite en entier
             
-            //création d'une session
-            $_SESSION["user"] = $user["nickname"];
+            // Debug - à retirer après tests
+            var_dump($_SESSION);
             
-            //redirection vers la page top secrète
-            header("Location:account.php");
-            exit;
-        }
-        else{
-            $error = "Identifiant ou mot de passe incorrect";
+            header('Location: account.php');
+            exit();
+        } else {
+            $error = "Email ou mot de passe incorrect";
         }
     }
-    else{
-         $error = "Identifiant ou mot de passe incorrect";
-    }
-    
-    //2 comparer le hash avec le mdp saisi dans le form 
-        //si c'est ok, on créer la session
-        //si pas ok, on affiche une erreur 
-    
-   
+}
+
+// Si l'utilisateur est déjà connecté, rediriger vers account.php
+if (isset($_SESSION['user']) && isset($_SESSION['user_id'])) {
+    header('Location: account.php');
+    exit();
 }
 
 // if(isset($_SESSION["user"]) && $_SESSION["user"] === "admin"){

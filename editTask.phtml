@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Modifier la tâche</h2>
+    
+    <form method="post" class="edit-form">
+        <div>
+            <label for="title">Titre</label>
+            <input type="text" id="title" name="title" value="<?= htmlspecialchars($task['title']) ?>" required>
+        </div>
+        
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description"><?= htmlspecialchars($task['description']) ?></textarea>
+        </div>
+        
+        <div class="priority-checkboxes">
+            <label>
+                <input type="checkbox" name="urgent" value="1" <?= $task['urgent'] ? 'checked' : '' ?>> Urgent
+            </label>
+            <label>
+                <input type="checkbox" name="important" value="1" <?= $task['important'] ? 'checked' : '' ?>> Important
+            </label>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit">Sauvegarder</button>
+            <a href="account.php" class="btn-cancel">Annuler</a>
+        </div>
+    </form>
+</div> 
