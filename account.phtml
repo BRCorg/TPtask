@@ -1,3 +1,5 @@
+<div class = "main" >
+
 <div class="container1">
     
         <div>
@@ -15,17 +17,15 @@
         
 
         <div class="actions">
-            <a href="leaderboard.php">Voir le classement</a>
-            <a href="logout.php">Se déconnecter</a>
-            <div class="delete-account">
-                <a href="deleteAccount.php">Supprimer mon compte</a>
-            </div>
+            <a class ="ranking" href="leaderboard.php">Voir le classement <i class="fa-solid fa-ranking-star"></i></a>
+            <a class ="deco" href="logout.php">Se déconnecter  <i class="fa-solid fa-right-from-bracket"></i></a>
+            <a class = "supprimer-compte" href="deleteAccount.php">Supprimer mon compte <i class="fa-solid fa-trash"></i></a>
         </div>
         
         </div>
 
         <div class="tasks-container">
-            <h3>Mes tâches</h3>
+            <h3>Crée une tâche</h3>
             
             <!-- Formulaire d'ajout de tâche -->
             <form method="post" class="task-form">
@@ -46,6 +46,9 @@
             </div>
             <!-- Liste des tâches -->
             <div class="tasks-list">
+                
+                <h3>Mes tâches</h3>
+                
                 <?php if(empty($tasks)): ?>
                     <p>Vous n'avez pas encore de tâches.</p>
                 <?php else: ?>
@@ -85,4 +88,4 @@
             </div>
         </div>
 
-
+</div>
