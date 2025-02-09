@@ -1,0 +1,398 @@
+@import '_config.scss';
+@import "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap";
+
+
+body {
+    font-family: $font-family_1;
+    background-color: $background-color_1;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: $background-color_2;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color_1;
+}
+
+h1 {
+    text-align: center;
+    color: $color_2;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: $color_2;
+}
+
+input[type=text],
+input[type=password] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: $background-color_3;
+    color: $color_3;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    margin: 1em;
+    background-color: $background-color_4;
+    border-radius: 0.6em;
+    padding: 1.6em;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img {
+    width: 100%;
+    max-height: 450px;
+}
+
+footer {
+    background-color: $background-color_5;
+    padding: 1em;
+    margin: 1em;
+}
+
+.jsp {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.jsp2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.main {
+    padding: 2% 5%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.tasks-list {
+    width: 35%;
+}
+
+.footer {
+    color: $color_4;
+    text-align: center;
+}
+
+.lienButton {
+    color: $color_4;
+    text-decoration: none;
+}
+
+.tasks-container {
+    margin-top: 30px;
+}
+
+.task-form {
+    background: #f5f5f5;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.task {
+	background: white;
+	padding: 15px;
+	margin-bottom: 15px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	border: 2px solid transparent;
+}
+.task.urgent {
+	border-color: $border-color_1;
+	background-color: $background-color_6;
+	.priority-tag {
+		background-color: $background-color_8;
+		color: $color_4;
+	}
+}
+.task.important {
+	border-color: $border-color_2;
+	background-color: $background-color_7;
+	.priority-tag {
+		background-color: $background-color_9;
+		color: $color_4;
+	}
+}
+.task.urgent.important {
+	background: linear-gradient(to right, #fff5f5, #fff8e7);
+	border: 2px solid #ff4444;
+	border-right-color: $border-right-color_1;
+	.priority-tag {
+		background: linear-gradient(to right, #ff4444, #ffa700);
+		color: $color_4;
+	}
+}
+.priority-tag {
+	display: inline-block;
+	padding: 5px 10px;
+	border-radius: 15px;
+	font-size: 12px;
+	font-weight: bold;
+	margin-right: 5px;
+}
+.actions {
+    padding: 0.5em;
+    display: flex;
+    margin: 20px 0;
+    flex-direction: column;
+    padding: 0.5em;
+    display: flex;
+    margin: 20px 0;
+    flex-direction: column;
+}
+
+.deco {
+    padding: 0.3em;
+    text-decoration: none;
+    color: $color_5;
+}
+
+.supprimer-compte {
+    padding: 0.3em;
+    text-decoration: none;
+    color: $color_6;
+}
+
+textarea {
+    padding: 1em 0 3em 1em;
+    width: 90%;
+}
+
+.ranking {
+    padding: 0.3em;
+    text-decoration: none;
+    color: $color_5;
+}
+
+.priority-checkboxes {
+    label {
+        margin-right: 15px;
+    }
+}
+
+.task-actions {
+    float: right;
+}
+
+.edit-btn {
+    padding: 5px 10px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: $background-color_10;
+    color: $color_4;
+}
+
+.delete-btn {
+    padding: 5px 10px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: $background-color_8;
+    color: $color_4;
+}
+
+.edit-form {
+    input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    textarea {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+}
+
+.user-stats {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    color: $color_5;
+    .debutant {
+        background-color: $background-color_10;
+    }
+    .intermediaire {
+        background-color: $background-color_11;
+    }
+    .expert {
+        background-color: $background-color_12;
+    }
+}
+
+.leaderboard {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th {
+        background-color: $background-color_1;
+        font-weight: bold;
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+    td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+    }
+    tr.current-user {
+        background-color: $background-color_13;
+    }
+    tr {
+        &:hover {
+            background-color: $background-color_14;
+        }
+    }
+}
+
+.position-1 {
+    td {
+        &:first-child {
+            color: $color_7;
+            font-weight: bold;
+        }
+    }
+}
+
+.position-2 {
+    td {
+        &:first-child {
+            color: $color_8;
+            font-weight: bold;
+        }
+    }
+}
+
+.position-3 {
+    td {
+        &:first-child {
+            color: $color_9;
+            font-weight: bold;
+        }
+    }
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: $background-color_10;
+    color: $color_4;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.task.completed {
+    opacity: 0.7;
+    background-color: $background-color_15;
+    border-color: $border-color_3 !important;
+    h4 {
+        text-decoration: line-through;
+    }
+}
+
+.status-btn {
+    padding: 5px 10px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    line-height: 1;
+}
+
+.status-btn.completed {
+    background-color: $background-color_16;
+    border-color: $border-color_3;
+    color: $color_4;
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 960px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+    .tasks-list {
+        width: 90%;
+    }
+    .container {
+        width: 90%;
+    }
+    .leaderboard {
+        font-size: 10px;
+    }
+    .jsp2 {
+        display: flex;
+        flex-direction: column;
+    }
+    .img {
+        margin-top: 30px;
+    }
+}
